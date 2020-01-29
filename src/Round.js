@@ -1,4 +1,8 @@
 const Turn = require('../src/Turn');
+const Card = require('./Card');
+const Deck = require('./Deck');
+const data = require('./data');
+const prototypeQuestions = data.prototypeData;
 
 class Round {
   constructor(deck) {
@@ -26,7 +30,19 @@ class Round {
   }
 
   endRound() {
-    return `** Round over! ** You answered ${this.calculatePercentCorrect()} of the answers correctly!`;
+    let response = `** Round over! ** You answered ${this.calculatePercentCorrect() || 100}% of the answers correctly!`;
+    console.log(response);
+    return response;
+  }
+
+  startMissedRound() {
+    this.turns = 0;
+    let missedCards = this.incorrectGuesses.map(id => {
+      id = prototypeQuestions[id - 1];
+      return id;
+    });
+    this.deck = new Deck(missedCards);
+    this.incorrectGuesses = 0;
   }
 }
 
