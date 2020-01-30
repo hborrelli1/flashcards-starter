@@ -9,6 +9,8 @@ class Round {
     this.deck = deck;
     this.turns = 0;
     this.incorrectGuesses = [];
+    this.gameStartTime = new Date();
+    this.gameEndTime = null;
   }
 
   returnCurrentCard() {
@@ -30,8 +32,14 @@ class Round {
   }
 
   endRound() {
-    let response = `** Round over! ** You answered ${this.calculatePercentCorrect() || 100}% of the answers correctly!`;
+    let response = `** Round over! ** You answered ${this.calculatePercentCorrect()}% of the answers correctly!`;
+    this.gameEndTime = new Date();
+    let timeDiff = (this.gameEndTime - this.gameStartTime) / 1000;
+    let minutes = Math.floor((timeDiff / 60) % 60);
+    timeDiff -= minutes * 60;
+    let seconds = Math.floor(timeDiff % 60);
     console.log(response);
+    console.log(`This round took you ${minutes} minutes and ${seconds} seconds to complete.`);
     return response;
   }
 
@@ -42,7 +50,7 @@ class Round {
       return id;
     });
     this.deck = new Deck(missedCards);
-    this.incorrectGuesses = 0;
+    this.incorrectGuesses = [];
   }
 }
 

@@ -39,6 +39,7 @@ async function main(round) {
       round.endRound();
       while (round.incorrectGuesses.length) {
         round.startMissedRound();
+        round.gameStartTime = new Date();
         main(round);
       }
     } else {

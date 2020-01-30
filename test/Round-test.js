@@ -79,7 +79,7 @@ describe('Round', function() {
 
     expect(round.calculatePercentCorrect()).to.equal(66.66666666666666);
 
-    expect(round.endRound()).to.equal('** Round over! ** You answered 66.66666666666666 of the answers correctly!')
+    expect(round.endRound()).to.equal('** Round over! ** You answered 66.66666666666666% of the answers correctly!')
   });
 
   it('should be able to created a new array of missed cards', () => {
