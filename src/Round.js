@@ -1,5 +1,4 @@
 const Turn = require('../src/Turn');
-const Card = require('./Card');
 const Deck = require('./Deck');
 const data = require('./data');
 const prototypeQuestions = data.prototypeData;
