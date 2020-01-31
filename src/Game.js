@@ -12,10 +12,9 @@ class Game {
   }
 
   start() {
-    let cards = prototypeQuestions.map(card => {
-      card = new Card(card.id, card.question, card.answers, card.correctAnswer);
-      return card;
-    });
+    let cards = prototypeQuestions.map(card =>
+      Object.assign(new Card(), card)
+    );
     this.cards = cards;
     let deck = new Deck(cards);
     let currentRound = new Round(deck);
