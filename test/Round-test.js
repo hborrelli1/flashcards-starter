@@ -8,11 +8,6 @@ const Round = require('../src/Round');
 
 describe('Round', function() {
 
-  it('should be a function', function() {
-    const round = new Round();
-    expect(Round).to.be.a('function');
-  });
-
   it('should be an instance of Round', function() {
     const round = new Round();
     expect(round).to.be.an.instanceof(Round);
@@ -94,7 +89,6 @@ describe('Round', function() {
     round.takeTurn('capybara');
     expect(round.incorrectGuesses).to.deep.equal([1]);
     round.startMissedRound();
-    // console.log(round.deck);
   });
 
 });
